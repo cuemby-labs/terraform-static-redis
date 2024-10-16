@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+  title: OpenAPI schema for template terraform-static-redis
+components:
+  schemas:
+    variables:
+      type: object
+      required:
+      - hosts
+      - password
+      properties:
+        hosts:
+          title: Hosts
+          type: array
+          description: The host list of the Redis service.
+          items:
+            type: string
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 2
+        hosts_readonly:
+          title: Hosts Readonly
+          type: array
+          description: The readonly host list of the Redis service.
+          default: []
+          items:
+            type: string
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 3
+        port:
+          title: Port
+          type: number
+          description: The port of the Redis service.
+          default: 6379
+          x-walrus-ui:
+            group: Basic
+            order: 4
+        password:
+          title: Password
+          type: string
+          description: The password of the account to access the service.
+          format: password
+          writeOnly: true
+          x-walrus-ui:
+            group: Basic
+            order: 3
+      x-walrus-ui:
+        groupOrder:
+        - Basic
+        - Advanced
